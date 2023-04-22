@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cafeteria.Vistas.IniciarSesion"
+             NavigationPage.HasNavigationBar="False">
+
+
+
+
+    <StackLayout BackgroundColor="White" >
+        <Label Text="Log in" 
+               FontSize="40" 
+               FontAttributes="Bold" 
+               Margin="0,20,0,0" 
+               HorizontalOptions="Center" 
+               TextColor="#211E1F"
+              />
+        <Frame VerticalOptions="FillAndExpand"
+               Margin="20" 
+               CornerRadius="20" 
+               HasShadow="False"
+               BackgroundColor="#F2E9DF">
+            <StackLayout VerticalOptions="Center" 
+                         Spacing="15">
+                <Image Source="PapoSinFondo.png" 
+                       HeightRequest="250" HorizontalOptions="Center"/>
+                <Entry Placeholder="Email:" 
+                       Keyboard="Text" 
+                       PlaceholderColor="#3F3D3E"
+                       FontSize="Small"
+                       TextColor="#211E1F"
+                       
+                       Text="{Binding EmailTxt, Mode=TwoWay}"
+                       
+                       />
+                <Entry Placeholder="Password:" 
+                       IsPassword="True"
+                       PlaceholderColor="#3F3D3E"
+                       FontSize="Small" TextColor="#211E1F"
+                       
+                       Text="{Binding PasswordTxt, Mode=TwoWay}"
+                       />
+                <StackLayout HorizontalOptions="Center" Padding="0">
+                    <ActivityIndicator
+                        IsRunning="{Binding IsRunningTxt}"
+                        IsVisible="{Binding IsVisibleTxt}"
+                        Color="black"
+                        Scale="0.8"
+                        />
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    
+                    <Button Text="Login" 
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="white"
+                            Margin="50,0,0,0"
+                            HorizontalOptions="Center"
+                           
+                            Command="{Binding LoginCommand}"
+                        
+                        />
+                    <Button Text="Sign up" 
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="white"
+                            Margin="50,0,0,0"
+                            HorizontalOptions="Center"
+                            x:Name="btnRegistrarse"
+                            Clicked="btnRegistrarse_Clicked"
+                            
+                            />
+
+                </StackLayout>
+            </StackLayout>
+
+        </Frame>
+    </StackLayout>
+
+</ContentPage>

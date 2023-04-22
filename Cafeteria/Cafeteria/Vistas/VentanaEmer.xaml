@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cafeteria.Vistas.VentanaEmer">
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Spacing="10">
+        <StackLayout WidthRequest="280" >
+            <Frame VerticalOptions="FillAndExpand"
+                   Padding="15,40"
+               
+               CornerRadius="20" 
+               HasShadow="False"
+               BackgroundColor="White">
+                <StackLayout VerticalOptions="Center" 
+                         Spacing="10">
+
+
+                    <Label Text="CRUD" 
+               FontSize="40" 
+               FontAttributes="Bold" 
+               Margin="0,3,0,0"
+               HorizontalOptions="Center" 
+               TextColor="#211E1F"/>
+
+
+                  <Entry Placeholder="Fullname:" 
+                       Keyboard="Text"
+                       PlaceholderColor="#3F3D3E" 
+                       FontSize="Small" 
+                       TextColor="#211E1F"
+                       Text="{Binding NameTxt, Mode=TwoWay}"/>
+
+                    <DatePicker FontSize="Small"
+                            TextColor="#211E1F"
+                            Date="{Binding BirthdayTxt, Mode=TwoWay}"></DatePicker>
+
+                    <Entry Placeholder="Phone number:" 
+                       Keyboard="Numeric"
+                       FontSize="Small" 
+                       PlaceholderColor="#3F3D3E" 
+                       TextColor="#211E1F"
+                       Text="{Binding PhoneTxt, Mode=TwoWay}"/>
+                    <Entry Placeholder="Email:"
+                       Keyboard="Email"
+                       FontSize="Small"
+                       PlaceholderColor="#3F3D3E"
+                       TextColor="#211E1F"
+                       Text="{Binding EmailTxt, Mode=TwoWay}"/>
+                    <Entry Placeholder="Password:"
+                       IsPassword="False" 
+                       FontSize="Small"
+                       PlaceholderColor="#3F3D3E" 
+                       TextColor="#211E1F"
+                       Text="{Binding PasswordTxt, Mode=TwoWay}"/>
+                    <Entry Placeholder="Genero:"
+                       IsPassword="False" 
+                       FontSize="Small"
+                       PlaceholderColor="#3F3D3E" 
+                       TextColor="#211E1F"
+                       Text="{Binding GeneroTxt, Mode=TwoWay}"/>
+
+
+                    <StackLayout Orientation="Horizontal" >
+                        <Button Text="DELETE"  
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="White"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Center"
+                              Command="{Binding DeleteCommand}"
+                           
+                        />
+                        <Button Text="UPDATE" 
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="white"
+                            Margin="50,0,0,0"
+                            HorizontalOptions="Center"
+                            Command="{Binding SaveCommand}" IsEnabled="{Binding IsEnable}"
+                            
+                            
+                            
+                        />
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </Frame>
+
+
+        </StackLayout>
+        
+    </StackLayout>
+    
+    
+</ContentPage>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cafeteria.Vistas.VentanaEmerProduct">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Spacing="10">
+        <StackLayout WidthRequest="280" >
+            <Frame VerticalOptions="FillAndExpand"
+                   Padding="15,40"
+               
+               CornerRadius="20" 
+               HasShadow="False"
+               BackgroundColor="White">
+                <StackLayout VerticalOptions="Center" 
+                         Spacing="10">
+                    <Label Text="{Binding UrlTxt, Mode=TwoWay}" ></Label>
+
+
+                    <Label Text="{Binding DescripcionTxt,Mode=TwoWay}" ></Label>
+                    <Label Text="{Binding PriceTxt, Mode=TwoWay}" ></Label>
+
+                   
+                        <StackLayout Orientation="Horizontal">
+                        
+                        <Label Text="-"
+                               FontSize="36"
+                               HorizontalOptions="Start"
+                               TextColor="black"
+                               Margin="16,-2,0,6">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DisminuirCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label Text="{Binding CantidadTxt}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black"/>
+                            <Label Text="+"
+                               FontSize="21"
+                               HorizontalOptions="End"
+                               TextColor="Black"
+                               Margin="0,-4,16,0"
+                               VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AumentarCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        
+                    </StackLayout>
+                            
+                    
+                    
+
+
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Button Text="Agregar al carrito"  
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="White"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Center"
+                              Command="{Binding AgregarCompraCommand}"
+                           
+                        />
+                       
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+            </Frame>
+
+
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

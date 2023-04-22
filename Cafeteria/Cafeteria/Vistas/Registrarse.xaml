@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="Cafeteria.Vistas.Registrarse"
+              NavigationPage.HasNavigationBar="False">
+
+
+    <StackLayout BackgroundColor="White" >
+        <Label Text="Sign up" 
+               FontSize="40" 
+               FontAttributes="Bold" 
+               Margin="0,3,0,0"
+               HorizontalOptions="Center" 
+               TextColor="#211E1F"/>
+        <Frame VerticalOptions="FillAndExpand"
+               Margin="20,3,20,20" 
+               CornerRadius="20" 
+               HasShadow="False"
+               BackgroundColor="#F2E9DF">
+            <StackLayout VerticalOptions="Center" 
+                         Spacing="10">
+
+             
+                <Image Source="PapoSinFondo.png" 
+                       HeightRequest="250" HorizontalOptions="Center"/>
+
+                <Entry Placeholder="Fullname:" 
+                       Keyboard="Text"
+                       PlaceholderColor="#3F3D3E" 
+                       FontSize="Small" 
+                       TextColor="#211E1F"
+                       Text="{Binding NameTxt, Mode=TwoWay}"/>
+               
+                <DatePicker FontSize="Small"
+                            TextColor="#211E1F"
+                            Date="{Binding BirthdayTxt, Mode=TwoWay}"></DatePicker>
+                
+                <Entry Placeholder="Phone number:" 
+                       Keyboard="Numeric"
+                       FontSize="Small" 
+                       PlaceholderColor="#3F3D3E" 
+                       TextColor="#211E1F"
+                       Text="{Binding PhoneTxt, Mode=TwoWay}"/>
+                <Entry Placeholder="Email:"
+                       Keyboard="Email"
+                       FontSize="Small"
+                       PlaceholderColor="#3F3D3E"
+                       TextColor="#211E1F"
+                       Text="{Binding EmailTxt, Mode=TwoWay}"/>
+                <Entry Placeholder="Password:"
+                       IsPassword="True" 
+                       FontSize="Small"
+                       PlaceholderColor="#3F3D3E" 
+                       TextColor="#211E1F"
+                       Text="{Binding PasswordTxt, Mode=TwoWay}"/>
+
+                <Picker TextColor="#3F3D3E" 
+                        FontSize="Small" 
+                        HorizontalOptions="FillAndExpand" 
+                        Title="Seleccione el género:" TitleColor="#3F3D3E" 
+                        SelectedItem="{Binding GeneroTxt, Mode=TwoWay}"
+                        >
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}" >  
+                            <x:String>Mujer</x:String>
+                            <x:String>Hombre</x:String>
+                            <x:String>Otros</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <StackLayout Orientation="Horizontal" >
+                    <Button Text="Back"  
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="White"
+                            Margin="50,0,0,0"
+                            HorizontalOptions="Center"
+                              x:Name="btnvolver"
+                            Clicked="btnvolver_Clicked"
+                        />
+                    <Button Text="Sign up" 
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="white"
+                            Margin="50,0,0,0"
+                            HorizontalOptions="Center"
+                            Command="{Binding RegisterCommand}" IsEnabled="{Binding IsEnable}"
+                            
+                            
+                            
+                        />
+
+                </StackLayout>
+
+               
+            </StackLayout>
+
+        </Frame>
+    </StackLayout>
+</ContentPage>
