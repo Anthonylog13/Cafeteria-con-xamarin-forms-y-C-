@@ -12,17 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace Cafeteria.Vistas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CarritoDeCompras : ContentPage
+    public partial class VentanaEmerCarrito : ContentPage
     {
-        public CarritoDeCompras()
+        public VentanaEmerCarrito(CarritoModel _carrito)
         {
             InitializeComponent();
-            BindingContext = new CarritoCViewModel();
-        }
-
-        private async void ListViewVenEmerge_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            await Navigation.PushAsync(new VentanaEmerCarrito(e.SelectedItem as CarritoModel));
+            BindingContext = new VentanaEmerCarritoViewModel(_carrito);
 
         }
     }

@@ -35,5 +35,10 @@ namespace Cafeteria
         {
              App.MAsterDet.Detail.Navigation.PushAsync(new CarritoDeCompras());
         }
+
+        private void api_Clicked(object sender, EventArgs e)
+        {
+            App.MAsterDet.Detail.Navigation.PushAsync(new ApiRestView());
+        }
     }
 }

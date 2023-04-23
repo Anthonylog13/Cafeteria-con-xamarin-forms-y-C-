@@ -2,11 +2,91 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cafeteria.Vistas.CarritoDeCompras">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="{OnPlatform iOS=25, Android=18}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" WidthRequest="380">
+                <Label Text="Compras" 
+               FontSize="40" 
+               FontAttributes="Bold" 
+               Margin="0,3,0,0"
+               HorizontalOptions="Center" 
+               TextColor="black"/>
+               
+               
+                <Frame Padding="0" HasShadow="{OnPlatform Android=true, iOS=false}" VerticalOptions="Center">
+                    <ListView
+                        ItemsSource="{Binding ListViewSource}"
+                        HasUnevenRows="true"
+                        x:Name="ListViewVenEmerge"
+                        ItemSelected="ListViewVenEmerge_ItemSelected"
+                       
+                        IsPullToRefreshEnabled="{Binding IsRefreshingTxt}"
+                        >
+                        <ListView.ItemTemplate>
+                            <DataTemplate >
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                          
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" >
+                                            <Image Grid.Column="1" Source="{Binding UrlBD}" >
+
+                                            </Image>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="Precio: $" TextColor="black"/>
+                                                <Label Text="{Binding PriceBD}" TextColor="black"  FontSize="14"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="Unidades:" TextColor="black"/>
+                                                <Label Text="{Binding CantidadBD}" TextColor="black"  FontSize="14"/>
+                                            </StackLayout>
+                                            
+
+                                        </StackLayout >
+                                        <StackLayout Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                            
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                            <Label Text="Descripción:" TextColor="black"/>
+                                            <Label Text="{Binding DescriptionBD}" FontSize="12" TextColor="black"/>
+
+
+
+
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                </Frame>
+
+            </StackLayout>
+
+        </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>

@@ -1,17 +1,13 @@
 ﻿using Cafeteria.Models;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 
-using System.Data.Common;
-using Xamarin.Forms;
-using GalaSoft.MvvmLight.Command;
-using Cafeteria.Vistas;
-
 namespace Cafeteria.ViewModel
 {
-    public class VentanaEmerProductViewModel:BaseViewModel
+    internal class VentanaEmerCarritoViewModel: BaseViewModel
     {
         #region atributes
         private int ProductId;
@@ -68,21 +64,21 @@ namespace Cafeteria.ViewModel
                 CantidadTxt -= 1;
                 RespuestaTxt = "";
             }
-           
+
         }
-        public async void AgregarCompra()
+        public async void SaveMethod()
         {
 
-            if (CantidadTxt==0)
+            if (CantidadTxt == 0)
             {
                 RespuestaTxt = "La cantidad de unidades debe ser mayor que 0";
             }
-            else if (CantidadTxt >0 )
+            else if (CantidadTxt > 0)
             {
-                 
-                var compra = new CarritoModel
+
+                var carro = new CarritoModel
                 {
-                    
+                    ProductId = ProductIdTx,
                     DescriptionBD = DescripcionTxt,
                     PriceBD = PriceTxt,
                     UrlBD = UrlTxt,
@@ -90,9 +86,8 @@ namespace Cafeteria.ViewModel
 
 
                 };
-
-                await App.Database.SaveCompraModelsAsync(compra);
-                //await Application.Current.MainPage.Navigation.PushAsync(new Detail());
+                await App.Database.SaveCarritoModelsAsync(carro);
+                await App.Current.MainPage.Navigation.PushAsync(new Vistas.CarritoDeCompras());
 
 
 
@@ -100,6 +95,22 @@ namespace Cafeteria.ViewModel
             }
 
 
+        }
+
+        
+
+        private async void DeleteMethod()
+        {
+            var carrito = new CarritoModel
+            {
+                ProductId = ProductIdTx,
+                DescriptionBD = DescripcionTxt,
+                PriceBD = PriceTxt,
+                UrlBD = UrlTxt,
+                CantidadBD = CantidadTxt,
+            };
+            await App.Database.DeleteCarritoModelsAsync(carrito);
+            await App.Current.MainPage.Navigation.PushAsync(new Vistas.CarritoDeCompras());
         }
 
         #endregion
@@ -129,16 +140,22 @@ namespace Cafeteria.ViewModel
             }
 
         }
-        public ICommand AgregarCompraCommand
+        public ICommand SaveCommand
         {
             get
             {
-                return new RelayCommand(AgregarCompra);
+                return new RelayCommand(SaveMethod);
             }
-            set
-            {
 
+
+        }
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new RelayCommand(DeleteMethod);
             }
+
 
         }
 
@@ -148,20 +165,18 @@ namespace Cafeteria.ViewModel
         #endregion
 
         #region Contructor
-        public VentanaEmerProductViewModel(ProductoModel _producto)
+        public VentanaEmerCarritoViewModel(CarritoModel _carrito)
         {
 
-            ProductIdTx = _producto.ProductId;
-            DescripcionTxt = _producto.DescriptionBD;
-            PriceTxt = _producto.PriceBD;
-            UrlTxt = _producto.UrlBD;
-           
+            ProductIdTx = _carrito.ProductId;
+            DescripcionTxt = _carrito.DescriptionBD;
+            PriceTxt = _carrito.PriceBD;
+            UrlTxt = _carrito.UrlBD;
+            CantidadTxt = _carrito.CantidadBD;
+
 
         }
 
         #endregion
-
-
-
     }
 }

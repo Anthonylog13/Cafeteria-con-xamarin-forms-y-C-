@@ -32,8 +32,8 @@ namespace Cafeteria
 
         private async void btninicio_Clicked(object sender, EventArgs e)
        {
-           App.MAsterDet.IsPresented = false;
-           await App.MAsterDet.Detail.Navigation.PushAsync(new Detail());
+           //App.MAsterDet.IsPresented = false;
+           //await App.MAsterDet.Detail.Navigation.PushAsync(new Detail());
 
        }
 
@@ -47,8 +47,10 @@ namespace Cafeteria
               {
                  
                 await Navigation.PushAsync(new Vistas.IniciarSesion());
-            
-              }
+              await App.Database.SetTodoCarritoModel();
+            await App.Database.SetTodoProductoModel();
+
+        }
 
               private async void btnHistorial_Clicked(object sender, EventArgs e)
               {

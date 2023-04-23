@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout >
             <Button  Text="Inicio" x:Name="btninicio" BackgroundColor="white" ImageSource="hogar1.png"   Clicked="btninicio_Clicked"/>
-            <Button Text="CRUD" x:Name="btnprofile" BackgroundColor="White" ImageSource="usuario1.png" Clicked="btnprofile_Clicked"/>
+            <Button Text="Perfil" x:Name="btnprofile" BackgroundColor="White" ImageSource="usuario1.png" Clicked="btnprofile_Clicked"/>
             <Button Text="Cupones" x:Name="btnCupones" BackgroundColor="White" ImageSource="cupon1.png" Clicked="btnCupones_Clicked" />
             <Button Text="Historial de pepidos" x:Name="btnHistorial" BackgroundColor="white" ImageSource="historial1.png" Clicked="btnHistorial_Clicked"/>
             <Button Text="Método de pago" x:Name="btnMetodoP" BackgroundColor="White" ImageSource="metodo1.png" Clicked="btnMetodoP_Clicked"/>

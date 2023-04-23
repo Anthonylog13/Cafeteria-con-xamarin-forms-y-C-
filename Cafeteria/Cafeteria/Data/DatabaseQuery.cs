@@ -1,4 +1,5 @@
 ﻿using Cafeteria.Models;
+using Cafeteria.Vistas;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Cafeteria.Data
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<PersonaModels>().Wait();
             _database.CreateTableAsync<ProductoModel>().Wait();
+            _database.CreateTableAsync<CarritoModel>().Wait();
         }
         #region CRUD
 
@@ -37,6 +39,17 @@ namespace Cafeteria.Data
                 return _database.InsertAsync(persona);
             }
         }
+        public Task<int> SaveCarritoModelsAsync(CarritoModel carrito)
+        {
+            if (carrito.ProductId != 0)
+            {
+                return _database.UpdateAsync(carrito);
+            }
+            else
+            {
+                return _database.InsertAsync(carrito);
+            }
+        }
 
         public Task<int> SaveProductoModelsAsync(ProductoModel producto)
         {
@@ -50,11 +63,27 @@ namespace Cafeteria.Data
             }
         }
 
+        public Task<int> SaveCompraModelsAsync(CarritoModel compra)
+        {
+            if (compra.ProductId != 0)
+            {
+                return _database.UpdateAsync(compra);
+            }
+            else
+            {
+                return _database.InsertAsync(compra);
+            }
+        }
+
         // Eliminar
 
         public Task<int> DeletePersonaModelsAsync (PersonaModels persona)
         {
             return _database.DeleteAsync(persona);
+        }
+        public Task<int> DeleteCarritoModelsAsync(CarritoModel carrito)
+        {
+            return _database.DeleteAsync(carrito);
         }
 
         public Task<List<PersonaModels>> GetPersonaModelsValidate(string email, string password)
@@ -82,7 +111,23 @@ namespace Cafeteria.Data
         {
             return _database.Table<ProductoModel>().ToListAsync();
         }
+        public Task<List<CarritoModel>> GetTodoCarritoModel()
+        {
+            return _database.Table<CarritoModel>().ToListAsync();
+        }
 
+        public Task<List<CarritoModel>> SetTodoCarritoModel()
+        {
+            return _database.QueryAsync<CarritoModel>("DELETE  FROM CarritoModel");
+
+
+        }
+        public Task<List<ProductoModel>> SetTodoProductoModel()
+        {
+            return _database.QueryAsync<ProductoModel>("DELETE  FROM ProductoModel ");
+
+
+        }
 
 
 

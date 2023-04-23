@@ -32,8 +32,8 @@ namespace Cafeteria
         {
             InitializeComponent();
 
-           //MainPage = new NavigationPage( new Vistas.IniciarSesion());
-            MainPage = new NavigationPage(new Vistas.Menuinicial());
+           MainPage = new NavigationPage( new Vistas.IniciarSesion());
+            //MainPage = new NavigationPage(new Vistas.Menuinicial());
         }
 
         protected override void OnStart()

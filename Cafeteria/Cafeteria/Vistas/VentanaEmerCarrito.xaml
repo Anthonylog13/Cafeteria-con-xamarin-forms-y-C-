@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cafeteria.Vistas.VentanaEmerProduct">
+             x:Class="Cafeteria.Vistas.VentanaEmerCarrito">
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical" Spacing="10">
         <StackLayout WidthRequest="300" >
             <Frame VerticalOptions="FillAndExpand"
@@ -10,64 +10,60 @@
                CornerRadius="20" 
                HasShadow="False"
                BackgroundColor="White">
-                
                 <StackLayout VerticalOptions="Center" 
                          Spacing="10">
-
                     <Image  Source="{Binding UrlTxt}" HorizontalOptions="Center"/>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                         <Label Text="Descripción:" TextColor="black"/>
                         <Label Text="{Binding DescripcionTxt}" TextColor="black"  FontSize="14"/>
                     </StackLayout>
-  
+
                     <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                         <Label Text="Precio: $" TextColor="black"/>
                         <Label Text="{Binding PriceTxt}" TextColor="black"  FontSize="14"/>
                     </StackLayout>
-                    
 
-                   
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                        
+
+                    <StackLayout Orientation="Horizontal">
 
                         <Label Text="-"
                                FontSize="36"
                                HorizontalOptions="Start"
                                TextColor="black"
                                Margin="16,-2,0,6">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DisminuirCommand}"/>
-                                </Label.GestureRecognizers>
-                            </Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DisminuirCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
 
-                            <Label Text="{Binding CantidadTxt}"
+                        <Label Text="{Binding CantidadTxt}"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="Black"/>
-                            <Label Text="+"
+                        <Label Text="+"
                                FontSize="21"
                                HorizontalOptions="End"
                                TextColor="Black"
                                Margin="0,-4,16,0"
                                VerticalOptions="Center">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding AumentarCommand}"/>
-                                </Label.GestureRecognizers>
-                            </Label>
-                        <Label Text="{Binding RespuestaTxt}" HorizontalOptions="EndAndExpand"/>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AumentarCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding RespuestaTxt}"/>
 
                     </StackLayout>
-                            
-                    
-                    
+
+
+
 
 
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                        <Button Text="Agregar al carrito"  
+                        <Button Text="Actualizar"  
                         TextTransform="None" 
                         BackgroundColor="#211E1F" 
                         CornerRadius="10"
@@ -76,10 +72,22 @@
                         TextColor="White"
                             Margin="0,0,0,0"
                             HorizontalOptions="Center"
-                              Command="{Binding AgregarCompraCommand}"
+                              Command="{Binding SaveCommand}"
                            
                         />
-                       
+                        <Button Text="Eliminar"  
+                        TextTransform="None" 
+                        BackgroundColor="#211E1F" 
+                        CornerRadius="10"
+                        FontSize="Small" 
+                        FontAttributes="Bold"
+                        TextColor="White"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="Center"
+                              Command="{Binding DeleteCommand}"
+                           
+                        />
+
 
                     </StackLayout>
 
